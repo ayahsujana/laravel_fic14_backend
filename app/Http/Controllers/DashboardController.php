@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,13 @@ class DashboardController extends Controller
         $qry11 = OrderItem::join('orders', 'order_items.order_id', '=', 'orders.id');
         $qry12 = OrderItem::join('orders', 'order_items.order_id', '=', 'orders.id');
         $qry13 = OrderItem::join('orders', 'order_items.order_id', '=', 'orders.id');
+        //total_product select from products
+        $qry14 = Product::select(DB::raw('COUNT(id) as total_product'));
+        //total_category select from category
+        $qry15 = Category::select(DB::raw('COUNT(id) as total_category'));
         $order =  $qry->orderBy('orders.id', 'desc')->limit(6)->get();
+        $tot_product = $qry14->first()->total_product ?? 0;
+        $tot_category = $qry15->first()->total_category ?? 0;
         $tot_budget = $qry2->when($search, function ($query, $search) use ($year) {
             $query->whereMonth('created_at', '=', $search)
                 ->whereYear('created_at', '=', $year);
@@ -61,6 +68,7 @@ class DashboardController extends Controller
                 $query->whereMonth('orders.created_at', '=', $search)
                     ->whereYear('orders.created_at', '=', $year);
             })->first()->total_qty ?? 0;
+
 
         $qry_terlaris = $qry9->where('payment_method', 'Tunai');
         if ($terlaris == date('W')) {
@@ -95,6 +103,6 @@ class DashboardController extends Controller
             ->limit(5)->get();
 
         $title = 'Dashboard';
-        return view('pages.dashboard', compact('title', 'search', 'tot_proses', 'tot_finish', 'tot_order', 'tot_balance', 'tot_budget', 'tot_sales', 'terlaris', 'order', 'tglBalance', 'totalBudget', 'totalBalance','bestproducts'));
+        return view('pages.dashboard', compact('title', 'search', 'tot_proses', 'tot_product', 'tot_category', 'tot_finish', 'tot_order', 'tot_balance', 'tot_budget', 'tot_sales', 'terlaris', 'order', 'tglBalance', 'totalBudget', 'totalBalance','bestproducts'));
     }
 }

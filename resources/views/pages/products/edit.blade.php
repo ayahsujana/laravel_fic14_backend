@@ -11,11 +11,11 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Advanced Forms</h1>
+                <h1>Edit Product</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="{{ route('product.index') }}">Products</a></div>
-                    <div class="breadcrumb-item">Forms</div>
+                    <div class="breadcrumb-item">Edit Product</div>
                 </div>
             </div>
 
@@ -34,19 +34,33 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $product->name) }}">
-                                        @error('name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Name<span class="text-danger">*</span></label>
+                                                <input type="text"
+                                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                                    value="{{ old('name', $product->name) }}">
+                                                @error('name')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Barcode</label>
+                                                <input type="number"
+                                                    class="form-control" name="barcode"
+                                                    value="{{ old('barcode') }}">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>HPP</label>
+                                                <label>HPP<span class="text-danger">*</span></label>
                                                 <input type="number" class="form-control @error('hpp') is-invalid @enderror" name="hpp" value="{{ old('hpp', $product->hpp) }}">
                                                 @error('hpp')
                                                     <div class="invalid-feedback">
@@ -57,7 +71,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Price</label>
+                                                <label>Price<span class="text-danger">*</span></label>
                                                 <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $product->price) }}">
                                                 @error('price')
                                                     <div class="invalid-feedback">
@@ -68,7 +82,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Stock</label>
+                                                <label>Stock<span class="text-danger">*</span></label>
                                                 <input type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock', $product->stock) }}">
                                                 @error('stock')
                                                     <div class="invalid-feedback">
@@ -78,8 +92,33 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
+                                        <label class="form-label">Category<span class="text-danger">*</span></label>
+                                        <select class="form-control selectric @error('category_id') is-invalid @enderror"
+                                            name="category_id">
+                                             @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label w-100">Status</label>
+                                        <div class="selectgroup selectgroup-pills">
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="status" value="1" class="selectgroup-input"
+                                                    {{ $product->status == 1 ? 'checked' : '' }}>
+                                                <span class="selectgroup-button">Active</span>
+                                            </label>
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="status" value="0" class="selectgroup-input"
+                                                    {{ $product->status == 0 ? 'checked' : '' }}>
+                                                <span class="selectgroup-button">Inactive</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="form-group">
                                         <label class="form-label">Category</label>
                                         <div class="selectgroup w-100">
                                             <label class="selectgroup-item">
@@ -98,16 +137,16 @@
                                                 <span class="selectgroup-button">Snack</span>
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Photo Product</label>
+                                        <label>Image<span class="text-danger">*</span></label>
                                         <div id="image-preview"
                                             class="image-preview @if (session('error')) is-invalid @endif">
                                             <label id="image-label">Choose File</label>
                                             <input type="file" name="image" id="image-upload" />
-                                            <img src="{{ Storage::url('products/'.$product->image) }}" class="img-fluid image-tampil" alt="">
+                                            <img src="{{ asset('uploads/products/'.$product->image) }}" class="img-fluid image-tampil" alt="">
                                         </div>
                                         @if (session('error'))
                                             <div class="invalid-feedback">

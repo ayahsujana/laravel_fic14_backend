@@ -1,0 +1,1204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap');
+
+$defaultfont: 'Poppins', sans-serif;
+$primarycolor: #bbfa34
+$white: #fff
+$ralewayfont: 'Raleway', sans-serif;
+
+@mixin dflex-center
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin position-absolute
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0 
+    right: 0
+
+html, body
+    height: 100%
+    overflow: auto
+body
+    margin: 0
+    padding: 100px 0 0
+    font-family: $defaultfont
+    color: #fff
+    font-size: 14px
+    overflow-x: hidden
+    background: #0c0c0d
+    &::-webkit-scrollbar
+        width: 1em;
+    &::-webkit-scrollbar-track
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    &::-webkit-scrollbar-thumb
+        background-color: darkgrey
+        outline: 1px solid slategrey  
+@media (pointer:coarse)
+    body::-webkit-scrollbar
+        width: 0
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
+    font-family: $ralewayfont
+.defaultfont
+    font-family: $defaultfont
+a
+    text-decoration: none !important
+.primary-color
+    color: $primarycolor
+.btn:focus
+    outline: none
+    box-shadow: 0 0 0 
+.btn-link
+    color: $primarycolor !important
+    font-weight: 800
+    display: inline-block
+    padding: 0 0 0px
+    border-radius: 0
+    font-size: 18px
+    text-decoration: none
+    font-family : $ralewayfont
+.btn-default
+    font-family : $ralewayfont
+    background: $primarycolor
+    border-radius: 5px
+    font-size: 16px
+    font-weight: 800
+    color: #090909
+    border: 1px solid transparent
+    transition: all 0.3s
+    padding: 7px 15px
+    display: inline-flex
+    align-items: center
+    &:hover
+        color: $primarycolor !important
+        background: transparent
+        border-color: $primarycolor
+.btn-outline-default
+    background: transparent
+    border-radius: 5px
+    font-size: 16px
+    font-weight: 600
+    color: #fff
+    border: 1px solid #fff
+    transition: all 0.3s
+    padding: 10px 13px
+    display: inline-flex
+    align-items: center
+    &:hover
+        color: $primarycolor !important
+        background: transparent
+        border-color: $primarycolor
+.btn-cancel
+    background: #ee3c19
+.btn-sm
+    font-size: 14px
+    padding: 7px 13px
+.dropdown-menu
+    padding: 0
+    background: #1e1e22
+    box-shadow: 0 0 20px #000
+    .dropdown-item
+        padding: 8px 10px
+        color: #fff
+        font-size: 14px
+        &:hover
+            background: $primarycolor
+            color: #090909
+            font-weight: 500
+.header
+    padding: 15px 28px 15px 8px
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 999
+    .navbar-nav .nav-link
+        font-size: 16px 
+        color: #fff
+        font-family: $ralewayfont
+        padding-right: 15px
+        padding-left: 15px
+        &.active
+            color: $primarycolor
+    .btn
+        color: #fff
+    .btn-default
+        color: #090909
+        margin-left: 15px
+        padding: 6px 20px
+.scrollspy-visible
+    .header
+        background: rgba(14, 14, 21, 0.91)
+.swiper
+    position: relative
+.swiper-button-next:after, .swiper-button-prev:after
+    content: none
+.filter-dropdown
+    padding: 16px
+    right: 0
+    left: auto !important
+    width: 220px
+    .form-control
+        background: #17161c
+        border: 0
+        color: rgba(255, 255, 255, 0.72)
+        padding: 10px
+        font-size: 14px
+.search-bar
+    position: absolute
+    top: -200px
+    left: 0
+    right: 0
+    bottom: auto
+    display: flex
+    align-items: center
+    padding: 0 10px
+    background: #0c0c0d
+    transition: all 0.2s
+    &.open-search
+        top: 0
+        bottom: 0
+    .form-control
+        background: #17161c
+        border: 0
+        color: rgba(255, 255, 255, 0.72)
+        padding: 10px
+        font-size: 14px
+        box-shadow: 0 0 0  !important
+    .input-group-text
+        background-color: #111114
+        border: 1px solid #111114 
+        color: #fff
+        cursor: pointer
+.home-slider
+    position: relative
+    min-height: 400px
+    margin-top: -100px
+    .swiper-button-next, .swiper-button-prev
+        display: none
+    .home-main-slider
+        height: 100%
+        .swiper-slide
+            height: 100%
+        .home-slide-img
+            width: 60%
+            object-fit: cover
+            object-position: center
+            margin-left: auto
+            display: block
+            height: 520px
+            @media (min-width: 1440px)
+                height: 700px
+        .slider-caption
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            background: rgb(14,14,21)
+            background: linear-gradient(90deg, rgba(14,14,21,1) 0%, rgba(14,14,21,1) 50%, rgba(253,187,45,0) 100%)
+            display: flex
+            align-items: center
+            justify-content: center
+            .content
+                max-width: 430px
+                color: #fff
+                font-size: 14px
+                line-height: 26px
+                padding-top: 40px
+            .movie-name
+                font-size: 48px
+                font-weight: 700
+                font-family: $ralewayfont
+                margin: 20px 0
+            @media (min-width: 1440px)
+                .content
+                    max-width: 470px
+                    font-size: 18px
+                    line-height: 30px
+                .movie-name
+                    margin: 40px 0
+    .thumb-overlap
+        position: absolute
+        bottom: 70px
+        right: 3px
+        margin: auto
+        .home-thumb-slider
+            max-width: 380px
+            margin-left: auto
+            overflow: hidden
+            .thumb-title
+                font-size: 16px
+                font-weight: bold
+                color: #fff
+                margin-top: 10px
+                cursor: pointer
+            .lan-text
+                font-size: 14px
+                color: #fff
+                white-space: nowrap
+                overflow: hidden
+                text-overflow: ellipsis
+                cursor: pointer
+            img
+                height: 110px
+                width: 100%
+                object-fit: cover
+                border-radius: 5px
+                border: 1px solid transparent
+                padding: 5px
+                cursor: pointer
+            .swiper-slide-thumb-active img
+                border: 1px solid #fff
+        @media (min-width: 1440px)
+            bottom: 110px
+            .home-thumb-slider
+                max-width: 467px
+                img
+                    height: 140px
+                    width: 100%
+                    object-fit: cover
+.section-space
+    padding: 40px 0 0
+.box-control
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding-right: 90px
+    margin-bottom: 15px
+.section-title
+    font-size: 20px
+    font-weight: 800
+    color: #fff
+    @media (min-width: 1600px)
+        font-size: 28px
+.coverimg
+    height: 140px
+    width: 100%
+    object-fit: cover
+.categories-slider
+    .swiper-wrapper
+        z-index: 111
+        .swiper-slide
+            width: auto
+    .swiper-button-next, .swiper-button-prev
+        top: -26px
+        color: #fff
+        right: 0
+        background: #050506
+        height: 36px
+        width: 36px
+        border-radius: 50%
+    .swiper-button-prev
+        left: auto
+        right: 40px
+    .moviewCat-box
+        position: relative
+        transition: all 0.3s
+        width: 230px
+        .coverimg
+            border-radius: 5px
+            height: 130px
+        .title
+            font-size: 15px
+            color: #fff
+            font-weight: 800
+            letter-spacing: 1px
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+            padding-right: 41px
+            margin: 0
+        .details
+            margin: 0 0 5px
+            font-size: 10px
+            color: #fff
+            -webkit-line-clamp: 2
+            -webkit-box-orient: vertical  
+            overflow: hidden
+            opacity: 0
+            max-height: 0
+            transition: all 0.3s
+        .overlap
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 0
+            z-index: 11
+            background: rgba(22, 22, 30, 0.95)
+            padding: 8px 
+            border-radius: 5px 5px 0 0
+            background: -webkit-gradient(linear, left bottom, left top, from(#0e0e15), color-stop(75%, rgba(14, 14, 21, 0.75)), to(rgba(253, 187, 45, 0)))
+            opacity: 0
+            .continue-btn
+                color: #000
+                position: absolute
+                right: 10px
+                top: -16px
+                background: #fff
+                padding: 7px
+                border-radius: 50%
+                display: flex
+                align-items: center
+                justify-content: center
+                svg
+                    width: 18px
+                    height: 18px
+            .progress-control
+                display: flex
+                justify-content: space-between
+                align-items: center
+            .progress
+                width: 100%
+                height: 3px
+                margin-right: 10px
+                background: #0c0c0d
+                .progress-bar
+                    background-color: #bbfa34
+            .time
+                margin: 0
+                color: #fff
+                font-size: 12px
+                min-width: 67px
+        &:hover
+            transform: scale(1.17)
+            z-index: 22
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.18)
+            .overlap
+                opacity: 1
+                z-index: 111
+            .details
+                opacity: .8
+                max-height: unset
+                display: -webkit-box
+.recently-slider
+    .coverimg
+        height: 140px
+        @media (min-width: 1600px)
+            height: 170px
+        @media (max-width: 1199px)
+            height: 170px
+    .moviewCat-box .overlap
+        opacity: 1
+.portrait-slider
+    .moviewCat-box
+        width: 180px
+        .coverimg
+            height: 250px
+            @media (min-width: 1600px)
+                height: 290px
+        .overlap
+            background-image: -webkit-gradient(linear, left bottom, left top, from(#0e0e15), color-stop(69%, rgba(14, 14, 21, 0.96)), to(rgba(253, 187, 45, 0)))
+            .title
+                margin-bottom: 5px
+            .continue-btn
+                position: relative
+                background: transparent
+                color: #fff
+                display: inline-flex
+                justify-content: flex-start
+                margin: 10px 0px 0px 10px
+                padding: 0
+                font-size: 10px
+                top: 0
+                svg
+                    width: 14px
+                    header: 14px
+                    margin-right: 5px
+.categories-slider.langauge-slider
+    .moviewCat-box
+        height: 150px
+        width: 150px
+        border-radius: 50%
+        overflow: hidden
+        cursor: pointer
+        margin: 0 auto
+        &:before    
+            content: ""
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            background: rgba(0, 0, 0, 0.50)
+            z-index: 1
+        .overlap
+            height: calc(100% - 10px)
+            width: calc(100% - 10px)
+            z-index: 1
+            display: block
+            opacity: 1
+            top: 50%
+            left: 50%
+            z-index: 222
+            transform: translate(-50%, -50%)
+            display: flex !important
+            align-items: center
+            justify-content: center
+            border-radius: 50%
+            background: rgba(0, 0, 0, 0.50)
+            img
+                max-width: 90%
+        .coverimg
+            height: 100%
+        .title
+            font-size: 18px
+            font-weight: 700
+            padding-right: 0
+    .channel-box
+        display: flex
+        align-items: center
+        justify-content: center
+        &:before
+            content: none
+        .coverimg
+            object-fit: contain
+            height: 60%
+            width: 60%
+.dark-red
+    background: #2d1b28
+.dark-purple
+    background: #121118
+.dark-brown
+    background: #141011
+.dark-green
+    background: #0e1316
+.dark-pink
+    background: #2d1b28
+.dark-blue
+    background: #272a44
+.footer
+    background: #050506
+    padding: 50px 0
+    margin-top: 70px
+    .details
+        font-size: 14px
+        color: #fff
+        opacity: 0.8
+        margin-top: 15px
+    .ft-title
+        font-size: 14px
+        color: #fff
+        font-weight: 700
+        font-family: $ralewayfont
+.quick-links
+    list-style: none
+    padding: 0
+    margin: 0
+    li
+        display: block
+        margin-bottom: 8px
+        a
+            color: #fff
+            opacity: 0.8
+            font-size: 16px
+.social-icons
+    background: rgba(255, 255, 255, 0.18)
+    height: 38px
+    width: 38px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 5px
+    color: rgba(255, 255, 255, 0.88)
+    &:hover
+        background: $primarycolor
+        color: #090909
+.video-wrapper
+    position: relative
+    border-radius: 15px
+    overflow: hidden
+    video
+        width: 100%
+        max-height: 600px
+        min-height: 200px
+    .play-button-wrapper
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        background: rgba(0, 0, 0, 0.62)
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+        .play-button
+            position: absolute
+            left: 50%
+            top: 50%
+            transform: translate(-50%, -50%)
+            background: $primarycolor
+            height: 70px
+            width: 70px
+            color: #000
+            border-radius: 50%
+            display: flex
+            align-items: center
+            justify-content: center
+            cursor: pointer
+.avability-label
+    display: flex
+    align-items: center
+    .title
+        color: #fff
+        margin: 0 15px 0 0
+.langauge-selection
+    .btn-outline-primary
+        border: 0
+        border-radius: 5px !important
+        padding: 2px 14px
+        display: flex
+        align-items: center
+        margin-right: 10px
+        img
+            width: 48px
+        &:hover
+            background: $primarycolor
+    input:checked + .btn-outline-primary
+        background: $primarycolor
+        img
+            filter: invert(1)
+.movie-title
+    font-size: 38px
+.icon-btn-group
+    .btn
+        border: 1px solid #fff
+        color: #fff
+        border-radius: 4px !important
+        margin-right: 12px
+        padding: 7px
+        &:last-child
+            margin-right: 0
+        &:hover
+            background: $primarycolor
+            border-color: $primarycolor
+            color: #090909
+.card
+    background: rgba(0, 0, 0, 0.26)
+    overflow: hidden
+.cast-slider
+    .moviewCat-box
+        height: 130px !important
+        width: 130px !important
+        .coverimg
+            object-fit: cover !important
+            height: 100% !important
+            width: 100% !important
+    .cast-name
+        font-weight: 800
+        margin-top: 20px
+        text-align: center
+        font-size: 14px
+    .role
+        font-size: 12px
+        text-align: center
+
+/* rented list css
+.rented-title
+    color: #fff
+    font-size: 28px
+    font-weight: 700
+.rented-box
+    background-color: #16161e
+    border-radius: 8px
+
+.rented-img
+    width: 100%
+    height: 240px
+    border-radius: 8px
+    overflow: hidden
+
+.rented-content
+    color: #fff
+    padding: 10px
+
+.rented-img img
+    object-fit: cover
+    height: 100%
+    width: 100%
+
+.content-title
+    font-size: 20px
+    line-height: 28px
+    font-weight: bold
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+    padding-bottom: 12px
+
+.sub-title
+    font-size: 16px
+    font-weight: 500
+
+.content-para
+    font-size: 14px
+    opacity: .5
+    display: -webkit-box
+    -webkit-line-clamp: 2
+    -webkit-box-orient: vertical
+    overflow: hidden
+    text-overflow: ellipsis
+.memebership-title
+    flex-wrap: wrap
+.member-sub-title
+    font-family: "Poppins", sans-serif
+    font-weight: 600
+    font-size: 20px
+.sub-member
+    font-weight: 500
+    color: #fff
+    font-size: 16.32px
+.table-dark
+    --bs-table-bg:#111112
+.table-striped > tbody > tr
+    &:nth-of-type(odd)
+        background: #1d1d1e
+        --bs-table-accent-bg : #1d1d1e
+.table
+    background: #111112
+    > :not(caption) > * > *
+        padding: 1rem .75rem
+        white-space: nowrap
+    tr
+        th
+            border-bottom: 1px solid #1d1d1e
+            font-size: 16px
+            font-family: $ralewayfont
+            color: #fefefe
+        td
+            border-bottom: 0
+            font-size: 14px
+            color: #fefefe
+            &.primary-color
+                color: $primarycolor
+                font-weight: 600
+/* subscrible css
+
+.subscribe-card
+    background-color: #000
+    border-radius: 10px
+
+.card-green
+    background-color: #bbfa34
+
+.subscribe-header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    border-bottom: 2px solid rgba(255, 255, 255, 0.21)
+    padding: 15px 20px 5px
+
+.card-green .subscribe-header
+    border-bottom: 2px solid #93c529
+
+.subscribe-title
+    color: #fff
+    font-size: 24px
+    text-transform: uppercase
+    font-family: $ralewayfont
+    font-weight: 700
+
+.card-green
+    .subscribe-title, .subscribe-price
+        color: #000
+        opacity: 1
+
+.subscribe-price
+    font-size: 22px
+    font-weight: bold
+
+.subscribe-body
+    padding: 15px 20px
+
+.subscribe-lists
+    list-style: none
+    padding-left: 0
+
+.subscribe-item
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 14px
+    p
+        font-size: 16px
+        font-family: $ralewayfont
+        font-weight: 600
+        color: #fff
+        opacity: .7
+        margin-bottom: 0
+
+.card-green .subscribe-item p
+    color: #000
+    opacity: 1
+
+.subscribe-item span
+    font-size: 20.71px
+    font-weight: 600
+    margin-left: 20px
+
+.card-green
+    .right-icon
+        filter: invert(1) brightness(0);
+    .subscribe-item span
+        color: #000
+
+.subscribe-item img
+    margin-left: 20px
+.btn-white
+    background: #fff !important
+    color: #000 !important
+    border-color: #fff !important
+    &:hover
+        color: #fff !important
+        background: transparent !important
+        border-color: #fff !important
+.column-tab
+    background: #000000
+    border-radius: 5px
+    overflow: hidden
+    width: 100%
+    .nav-link 
+        text-align: left
+        color: #fff
+        opacity: 0.7
+        display: flex
+        align-items: center
+        justify-content: space-between
+        font-size: 14px
+        padding: 12px 18px
+        &.active
+            background: $primarycolor
+            opacity: 1
+            color: #000
+.tab-wrapper
+    background: #000000
+    padding: 40px
+    background-image: url('../imgs/profile-bg.png')
+    background-repeat: no-repeat
+    background-position: top right
+.avatar-img
+    height: 120px
+    width: 120px
+    border-radius: 50%
+    background: $primarycolor
+    display: flex
+    align-items: center
+    justify-content: center
+    .name
+        font-size: 36px
+        font-weight: 800
+        font-family: $ralewayfont
+        color: #000
+.username
+    font-size: 26px
+    font-weight: 800
+    font-family: $ralewayfont
+    color: #fff
+.plan-text   
+    font-weight: 800
+.form-control
+    padding: 10px 15px
+    background: #16161c
+    font-size: 14px
+    border: 1px solid transparent
+    box-shadow: 0 0 0 !important
+    color: #fff
+    &:focus
+        background: #000
+        border: 1px solid $primarycolor
+.tab-wrapper
+    .form-control:disabled, .form-control[readonly]
+        background: transparent
+        border: 0
+        color: #fff
+        padding: 10px 0
+    .accordion-item, .device-card
+        background-color: #050505
+        border: 1px solid rgba(255, 255, 255, 0.13)
+        margin-bottom: 25px
+        border-radius: 5px
+        &:last-child
+            margin-bottom: 0
+        .accordion-button
+            background-color: #121010
+            box-shadow: 0 0 0
+            color: #fff
+            font-family: $ralewayfont
+            font-weight: 500
+            border: 1px solid rgba(255, 255, 255, 0.13)
+            &::after
+                filter: invert(1)
+            &.collapsed
+                border: 0
+        .accordion-button:not(.collapsed)::after
+            filter: invert(1) brightness(1) sepia(1) grayscale(1)
+    .card-icon
+        height: 40px
+.rented-slider
+    margin: 0
+    .swiper-slide
+        border-radius: 15px
+        overflow: hidden
+.modal-backdrop.show
+    opacity: .7
+.modal
+    .btn-close
+        position: absolute
+        color: #fff
+        right: 17px
+        top: 9px
+    .modal-content
+        background: #000
+        border: 1px solid rgba(183, 183, 183, 0.20)
+        .cast-img
+            width: 150px
+            height: 170px
+            object-fit: cover
+            border: 1px solid rgba(183, 183, 183, 0.20)
+        .name
+            color: $primarycolor
+            font-size: 18px
+            font-family: $ralewayfont
+        .details
+            font-size: 12px
+            margin: 12px 0
+.login-section
+    padding: 40px 40px 20px
+    .container
+        position: relative 
+        width: 800px 
+        min-height: 500px 
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1) 
+        overflow: hidden 
+        .user 
+            position: absolute 
+            top: 0 
+            left: 0 
+            width: 100% 
+            height: 100% 
+            display: flex 
+            .imgBx 
+                position: relative 
+                width: 50% 
+                height: 100% 
+                background: #ff0 
+                transition: 0.5s 
+                img 
+                    position: absolute 
+                    top: 0 
+                    left: 0 
+                    width: 100% 
+                    height: 100% 
+                    object-fit: cover 
+            .formBx 
+                position: relative 
+                width: 50% 
+                height: 100% 
+                background: #000 
+                display: flex 
+                justify-content: center 
+                align-items: center 
+                padding: 40px 
+                transition: 0.5s
+                .signup 
+                    position: relative 
+                    margin-top: 20px 
+                    font-size: 14px 
+                    letter-spacing: 1px 
+                    color: #555 
+                    text-transform: uppercase 
+                    font-weight: 300 
+                    a 
+                        font-weight: 600
+                        font-size: 14px !important
+        .signupBx 
+            pointer-events: none 
+            .formBx 
+                left: 100% 
+            .imgBx 
+                left: -100% 
+        &.active 
+            .signupBx 
+                pointer-events: initial 
+                .formBx 
+                    left: 0 
+                .imgBx 
+                    left: 0% 
+            .signinBx 
+                .formBx 
+                    left: 100% 
+                .imgBx 
+                    left: -100%
+        .signinBx 
+            .formBx 
+                left: 0% 
+            .imgBx 
+                left: 0% 
+@media (max-width: 991px) 
+    .login-section .container
+        max-width: 100%
+        .user .formBx
+            width: 100%
+        .imgBx 
+            display: none 
+            
+@media (min-width: 1600px)
+    .content-title
+        font-size: 22px
+        line-height: 30px
+
+@media (max-width: 1199px)
+    .portrait-slider .moviewCat-box .coverimg
+        height: 260px
+@media (max-width: 992px)
+    .header
+        .navbar-toggler
+            color: #fff
+            margin-left: auto
+        .navbar-collapse
+            position: fixed
+            top: 0
+            left: 0
+            bottom: 0
+            background: #000
+            width: 100%
+            height: 100% !important
+            min-height: 100% !important
+            overflow: auto
+            display: block
+            transform: translateX(-100%)
+            transition: all 0.3s
+            padding: 20px
+            &.show
+                transform: translateX(0%)
+            .navbar-toggler
+                position: absolute
+                top: 16px
+                right: 14px
+                svg
+                    width: 34px
+                    height: 34px
+            .dropdown-menu
+                background: transparent
+                margin-left: 20px
+    .home-slider 
+        .home-main-slider
+            .home-slide-img
+                height: 520px
+            .slider-caption
+                > .container
+                    padding-top: 70px
+                .movie-name
+                    font-size: 42px
+                    margin: 16px 0
+                .content
+                    max-width: 370px
+                    color: #fff
+                    font-size: 14px
+                    line-height: 24px
+        .thumb-overlap
+            display: none
+    .section-space
+        padding: 30px 0
+    .quick-links
+        margin: 0 0 20px
+    .categories-slider .moviewCat-box
+        width: 210px
+    .portrait-slider .moviewCat-box
+        width: 180px
+        .coverimg 
+            height: 240px
+    .cast-slider .moviewCat-box
+        height: 100px !important
+        width: 100px !important
+    .login-section .container
+        min-height: 470px
+@media (max-width: 767px)
+    body
+        padding: 80px 0 0
+    .btn-default, .btn-outline-default
+        font-size: 14px
+        padding: 7px 10px
+        svg
+            height: 18px
+            width: 18px
+    .header
+        padding: 5px 8px 5px 5px
+    .home-slider
+        .home-main-slider
+            .home-slide-img
+                height: 390px
+            .slider-caption
+                .movie-name
+                    font-size: 35px
+                p.mb-4
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    -webkit-box-orient: vertical
+                    display: -webkit-box
+                    -webkit-line-clamp: 3
+    .box-control
+        margin-bottom: 15px
+        .btn-link
+            font-size: 16px
+            min-width: 70px
+    .section-title, .rented-title
+        font-size: 18px
+        margin: 8px 0
+    .btn-link
+        font-size: 16px
+    .categories-slider .swiper-button-next, .categories-slider .swiper-button-prev
+        height: 30px
+        width: 30px
+    .categories-slider .moviewCat-box
+        width: 200px
+        .coverimg
+            height: 115px
+    .portrait-slider .moviewCat-box
+        width: 170px
+        .coverimg 
+            height: 240px
+        .details
+            font-size: 10px
+    .categories-slider.langauge-slider
+        .moviewCat-box
+            height: 120px
+            width: 120px
+            .title
+                font-size: 14px
+                font-weight: 500
+            .overlap img
+                max-width: 68%
+        .channel-box .coverimg 
+            height: 50%
+            width: 50%
+    .footer
+        margin-top: 40px
+    .content
+        padding-right: 0
+        padding-left: 0
+    .content-title, .subscribe-title
+        font-size: 20px
+    .subscribe-price
+        font-size: 18px
+    .rented-img
+        width: 100%
+        height: 100%
+    .rented-content
+        padding: 10px 10px 16px
+    .member-sub-title
+        font-size: 16px
+        width: 100%
+    .table
+        > :not(caption) > * > *
+            padding: 0.75rem .75rem
+        tr
+            th
+                font-size: 14px
+    .tab-wrapper
+        padding: 20px
+        h5.fw-bold
+            font-size: 16px
+        .accordion-item .accordion-button
+            font-size: 14px
+            padding: 12px 14px
+    .username
+        font-size: 18px
+    .device-card
+        h6.fw-bold
+            font-size: 14px
+        .date 
+            margin-bottom: 10px !important
+    .rented-slider
+        min-height: 380px
+        .home-slide-img
+            height: 350px !important
+        .slider-caption
+            padding: 0 18px !important
+            .content
+                padding-top: 0
+    .login-section
+        padding: 20px 40px 20px
+    .login-section .container
+        min-height: 470px
+        .user .formBx
+            padding: 30px
+@media (max-width: 567px)
+    .header 
+        .navbar > .container
+            display: flex
+            flex-wrap: nowrap
+        .btn-default
+            display: none
+        .btn
+            padding: 10px 4px
+        .navbar-nav
+            .btn-default
+                display: block
+    .home-slider
+        .home-main-slider
+            .home-slide-img
+                height: 450px
+                width: 100%
+            .slider-caption
+                background: rgba(14, 14, 21, 0.75)
+                padding: 0 30px
+                p.mb-4
+                    -webkit-line-clamp: 2
+                .movie-name
+                    font-size: 28px
+    .section-space
+        padding: 20px 0
+    .section-title
+        font-size: 16px
+        line-height: 22px
+        margin: 0px 0 12px
+    .recently-slider
+        .coverimg
+            height: 140px
+    .box-control 
+        padding-right: 0
+        flex-direction: column
+        align-items: flex-start
+        .btn-link
+            font-size: 14px
+            min-width: 60px
+            padding: 0
+            margin-left: -3px
+    .categories-slider .moviewCat-box
+        width: 160px
+        &:hover
+            transform: scale(1.07)
+        .coverimg
+            height: 105px
+        .overlap .continue-btn
+            padding: 5px
+            right: 15px
+            top: -6px
+            svg
+                width: 16px
+                height: 16px
+    .portrait-slider .moviewCat-box
+        width: 150px
+        .coverimg
+            height: 220px
+        .overlap .continue-btn
+            margin: 5px 0px 0px 0px
+            font-size: 10px
+            top: 0px
+            right: 0
+            padding: 0 0px
+        .details
+            font-size: 10px
+    .cast-slider .role
+        font-size: 10px
+    .rented-img img
+        height: 150px
+    .avatar-img
+        height: 100px
+        width: 100px
+    .tab-wrapper
+        margin-top: 20px
+    .column-tab .nav-link
+        font-size: 14px
+        padding: 9px 18px
+        flex: 0 0 50%

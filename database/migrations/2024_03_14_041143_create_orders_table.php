@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamp('transaction_time');
             $table->integer('total_price');
+            $table->double('total_hpp')->default(0);
             $table->integer('total_item');
+            $table->integer('change_money');
             $table->foreignId('kasir_id')->constrained('users');
             $table->enum('payment_method', ['Tunai', 'QRIS']);
             $table->timestamps();

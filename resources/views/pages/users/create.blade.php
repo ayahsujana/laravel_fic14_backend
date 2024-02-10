@@ -16,11 +16,11 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Advanced Forms</h1>
+                <h1>Add New User</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="{{ route('user.index') }}">Users</a></div>
-                    <div class="breadcrumb-item">Form</div>
+                    <div class="breadcrumb-item">add user</div>
                 </div>
             </div>
 

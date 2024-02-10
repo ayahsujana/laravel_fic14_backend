@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'iPOS Dashboard')
+@section('title', 'Dashboard')
 
 @push('style')
     <style>
@@ -66,6 +66,7 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
                                 <a href="{{ route('order.index') }}">
                                     <div class="card-icon shadow-primary bg-primary mb-0 mr-0">
@@ -100,6 +101,78 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card card-statistic-2">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                                <a href="{{ route('product.index') }}">
+                                    <div class="card-icon shadow-primary bg-primary mb-0 mr-0">
+                                        <i class="fas fa-cart-shopping"></i>
+                                    </div>
+                                </a>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4 class="text-nowrap">Products</h4>
+                                    </div>
+                                    <div class="card-body" style="font-size: 20px">
+                                        {{ number_format($tot_product) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                                <a href="{{ route('category.index') }}">
+                                    <div class="card-icon shadow-primary bg-primary mb-0 mr-0">
+                                        <i class="fas fa-table"></i>
+                                    </div>
+                                </a>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4 class="text-nowrap">Category</h4>
+                                    </div>
+                                    <div class="card-body" style="font-size: 20px">
+                                        {{ number_format($tot_category) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                                <a href="{{ route('order.index') }}">
+                                    <div class="card-icon shadow-primary bg-primary mb-0 mr-0">
+                                        <i class="fas fa-rupiah-sign"></i>
+                                    </div>
+                                </a>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4>Omzet</h4>
+                                    </div>
+                                    <div class="card-body" style="font-size: 20px">
+                                        {{ number_format($tot_balance) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                                <a href="{{ route('order.index') }}">
+                                    <div class="card-icon shadow-primary bg-primary mr-0">
+                                        <i class="fas fa-rupiah-sign"></i>
+                                    </div>
+                                </a>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4>Laba</h4>
+                                    </div>
+                                    <div class="card-body" style="font-size: 20px">
+                                        {{ number_format($tot_balance - $tot_budget) }}
+                                        <span class="text-success"
+                                            style="font-size: 12px">{{ $tot_balance > 0 ? number_format((($tot_balance - $tot_budget) / $tot_balance) * 100, 2) : 0 }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-chart">
+                            <canvas id="balance-chart" height="80"></canvas>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="card card-statistic-2">
                         <div class="card-chart">
                             <canvas id="balance-chart" height="80"></canvas>
@@ -139,7 +212,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row">
                 <div class="col-lg-8">
@@ -231,7 +304,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </section>
     </div>

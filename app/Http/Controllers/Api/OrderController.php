@@ -18,6 +18,7 @@ class OrderController extends Controller
             'total_price' => 'required|numeric',
             'total_item' => 'required|numeric',
             'order_items' => 'required|array',
+            'change_money' => 'required|array',
             'order_items.*.product_id' => 'required|exists:products,id',
             'order_items.*.quantity' => 'required|numeric',
             'order_items.*.total_price' => 'required|numeric',
@@ -28,6 +29,7 @@ class OrderController extends Controller
             'kasir_id' => $request->kasir_id,
             'total_price' => $request->total_price,
             'total_item' => $request->total_item,
+            'change_money' => $request->change_money,
             'payment_method' => $request->payment_method,
         ]);
         $total_hpp = 0;

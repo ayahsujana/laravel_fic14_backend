@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('home') }}">Aplikasi POS</a>
+            <a href="{{ route('home') }}">Kape POS</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('home') }}">POS</a>
@@ -12,6 +12,9 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}"><i class="fas fa-users"></i><span>Users</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('category.index') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}"><i class="fa fa-bars"></i><span>Category</span></a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('product.index') }}" class="nav-link {{ Request::is('product') ? 'active' : '' }}"><i class="fas fa-gift"></i><span>Products</span></a>

@@ -70,6 +70,7 @@
                                             <th>CoGS</th>
                                             <th>Price</th>
                                             <th>Photo</th>
+                                            <th>Status</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -79,7 +80,7 @@
                                                 <td>{{ $product->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $product->category }}
+                                                    {{ $product->category->name }}
                                                 </td>
                                                 <td>
                                                     {{ $product->hpp }}
@@ -89,7 +90,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($product->image)
-                                                        <img src="{{ asset('storage/products/'.$product->image) }}" alt=""
+                                                        <img src="{{ asset('uploads/products/'.$product->image) }}" alt=""
                                                             width="100px" class="img-thumbnail">
                                                             @else
                                                             <span class="badge badge-danger">No Image</span>
@@ -97,6 +98,13 @@
                                                     @endif
 
                                                 </td>
+                                                <td>
+                                                    @if ($product->is_available)
+                                                    <span class="badge badge-success">IN STOCK</span>
+                                                    @else
+                                                    <span class="badge badge-secondary">OUT OF STOCK</span>
+                                                    @endif</td>
+                                                <td>
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">

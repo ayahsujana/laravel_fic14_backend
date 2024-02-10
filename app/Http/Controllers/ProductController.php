@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +22,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('pages.products.create');
+        $categories = \App\Models\Category::all();
+        return view('pages.products.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -31,15 +33,24 @@ class ProductController extends Controller
             'price' => 'required|integer',
             'hpp' => 'required|integer',
             'stock' => 'required|integer',
-            'category' => 'required|in:food,drink,snack',
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp'
+            'barcode' => '',
+            'category_id' =>'required|integer',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
         ]);
 
         $filename = time() . '.' . $request->image->extension();
-        $request->image->storeAs('public/products', $filename);
+        //$request->image->storeAs('public/products', $filename);
+        $request->file('image')->move(public_path('uploads/products'), $filename);
+
         $data = $request->all();
         $data['image'] = $filename;
-        // $data['stock_min'] = 0;
+        $data['category_id'] = $request->category_id;
+        //barcode default value 0
+        if ($request->barcode == null) {
+            $data['barcode'] = 0;
+        } else
+            $data['barcode'] = $request->barcode;
+
         Product::create($data);
         return redirect()->route('product.index')->with('success', 'Product successfully created');
     }
@@ -47,7 +58,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('pages.products.edit', compact('product'));
+        $categories = \App\Models\Category::all();
+        return view('pages.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -58,24 +70,29 @@ class ProductController extends Controller
             'price' => 'required|integer',
             'hpp' => 'required|integer',
             'stock' => 'required|integer',
-            'category' => 'required|in:food,drink,snack',
+            'category_id' =>'required|integer',
         ]);
 
         $imagePath = Product::find($id)->image;
 
         if ($request->hasFile('image')) {
             $request->validate([
-                'image' => 'required|image|mimes:png,jpg,jpeg,webp'
+                'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
             ]);
-            if (Storage::disk('public')->exists('products/' . $imagePath)) {
-                Storage::disk('public')->delete('products/' . $imagePath);
+
+            if (File::exists('uploads/products/' . $imagePath)) {
+                File::delete('uploads/products/' . $imagePath);
             }
+
             $imagePath = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/products', $imagePath);
+            //$request->image->storeAs('public/products', $imagePath);
+            $request->file('image')->move(public_path('uploads/products'), $imagePath);
         }
+
         $data = $request->all();
         $product = Product::findOrFail($id);
         $data['image'] = $imagePath;
+        $data['category_id'] = $request->category_id;
         $product->update($data);
         return redirect()->route('product.index')->with('success', 'Product successfully updated');
     }

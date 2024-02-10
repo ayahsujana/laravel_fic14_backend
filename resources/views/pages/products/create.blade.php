@@ -11,11 +11,11 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Advanced Forms</h1>
+                <h1>Add New Product</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item">Product</div>
-                    <div class="breadcrumb-item"><a href="#">Forms</a></div>
+                    <div class="breadcrumb-item"><a href="#">Add Product</a></div>
                 </div>
             </div>
 
@@ -30,20 +30,33 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value="{{ old('name') }}">
-                                        @error('name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Name<span class="text-danger">*</span></label>
+                                                <input type="text"
+                                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                                    value="{{ old('name') }}">
+                                                @error('name')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Barcode</label>
+                                                <input type="number"
+                                                    class="form-control" name="barcode"
+                                                    value="{{ old('barcode') }}">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>HPP</label>
+                                                <label>Purchase Price<span class="text-danger">*</span></label>
                                                 <input type="number"
                                                     class="form-control @error('hpp') is-invalid @enderror" name="hpp"
                                                     value="{{ old('hpp') }}">
@@ -56,7 +69,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Price</label>
+                                                <label>Selling Price<span class="text-danger">*</span></label>
                                                 <input type="number"
                                                     class="form-control @error('price') is-invalid @enderror" name="price"
                                                     value="{{ old('price') }}">
@@ -69,7 +82,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Stock</label>
+                                                <label>Stock<span class="text-danger">*</span></label>
                                                 <input type="number"
                                                     class="form-control @error('stock') is-invalid @enderror" name="stock"
                                                     value="{{ old('stock') }}">
@@ -81,8 +94,33 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
+                                        <label class="form-label">Category<span class="text-danger">*</span></label>
+                                        <select class="form-control selectric @error('category_id') is-invalid @enderror"
+                                            name="category_id">
+                                            <option value="">-- Select Category --</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Status</label>
+                                        <div class="selectgroup selectgroup-pills">
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="status" value="1" class="selectgroup-input"
+                                                    checked="">
+                                                <span class="selectgroup-button">Active</span>
+                                            </label>
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="status" value="0" class="selectgroup-input">
+                                                <span class="selectgroup-button">Inactive</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="form-group">
                                         <label class="form-label">Category</label>
                                         <div class="selectgroup w-100">
                                             <label class="selectgroup-item">
@@ -101,11 +139,11 @@
                                                 <span class="selectgroup-button">Snack</span>
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Photo Product</label>
+                                        <label>Image<span class="text-danger">*</span></label>
                                         <div id="image-preview"
                                             class="image-preview @if (session('error')) is-invalid @endif">
                                             <label id="image-label">Choose File</label>

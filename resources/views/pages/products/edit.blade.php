@@ -103,41 +103,40 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <label class="form-label w-100">Status</label>
-                                        <div class="selectgroup selectgroup-pills">
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="status" value="1" class="selectgroup-input"
-                                                    {{ $product->status == 1 ? 'checked' : '' }}>
-                                                <span class="selectgroup-button">Active</span>
-                                            </label>
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="status" value="0" class="selectgroup-input"
-                                                    {{ $product->status == 0 ? 'checked' : '' }}>
-                                                <span class="selectgroup-button">Inactive</span>
-                                            </label>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="form-label">Status</label>
+                                                <div class="selectgroup selectgroup-pills">
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="is_available" value="1" class="selectgroup-input"
+                                                        {{ $product->is_available == 1 ? 'checked' : '' }}>
+                                                        <span class="selectgroup-button">IN STOCK</span>
+                                                    </label>
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="is_available" value="0" class="selectgroup-input"
+                                                        {{ $product->is_available == 0 ? 'checked' : '' }}>
+                                                        <span class="selectgroup-button">OUT OF STOCK</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Best Seller</label>
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="is_best_seller" value="1" class="selectgroup-input"
+                                                    {{ $product->is_best_seller == 1 ? 'checked' : '' }}>
+                                                    <span class="selectgroup-button">YES</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="is_best_seller" value="0" class="selectgroup-input"
+                                                    {{ $product->is_best_seller == 0 ? 'checked' : '' }}>
+                                                    <span class="selectgroup-button">NO</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label class="form-label">Category</label>
-                                        <div class="selectgroup w-100">
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="category" value="food" class="selectgroup-input"
-                                                    @if ($product->category == 'food') checked @endif>
-                                                <span class="selectgroup-button">Food</span>
-                                            </label>
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="category" value="drink" class="selectgroup-input"
-                                                    @if ($product->category == 'drink') checked @endif>
-                                                <span class="selectgroup-button">Drink</span>
-                                            </label>
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="category" value="snack" class="selectgroup-input"
-                                                    @if ($product->category == 'snack') checked @endif>
-                                                <span class="selectgroup-button">Snack</span>
-                                            </label>
-                                        </div>
-                                    </div> --}}
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">

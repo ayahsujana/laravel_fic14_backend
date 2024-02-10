@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,6 +44,8 @@ class ProductController extends Controller
         $data = $request->all();
         $data['image'] = $filename;
         $data['category_id'] = $request->category_id;
+        $data['is_best_seller'] = $request->is_best_seller;
+        $data['is_available'] = $request->is_available;
         //barcode default value 0
         if ($request->barcode == null) {
             $data['barcode'] = 0;
@@ -80,8 +81,8 @@ class ProductController extends Controller
                 'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
             ]);
 
-            if (File::exists('uploads/products/' . $imagePath)) {
-                File::delete('uploads/products/' . $imagePath);
+            if (Storage::exists(public_path('uploads/products/' . $imagePath))) {
+                Storage::delete(public_path('uploads/products/'. $imagePath));
             }
 
             $imagePath = time() . '.' . $request->image->extension();
@@ -93,6 +94,12 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $data['image'] = $imagePath;
         $data['category_id'] = $request->category_id;
+        $data['is_best_seller'] = $request->is_best_seller;
+        $data['is_available'] = $request->is_available;
+        if ($request->barcode == null) {
+            $data['barcode'] = 0;
+        } else
+            $data['barcode'] = $request->barcode;
         $product->update($data);
         return redirect()->route('product.index')->with('success', 'Product successfully updated');
     }

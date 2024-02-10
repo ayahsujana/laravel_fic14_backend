@@ -58,13 +58,9 @@
                                         </div>
                                     </form>
                                 </div>
-
-                                <div class="clearfix mb-3"></div>
-
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>CoGS</th>

@@ -106,18 +106,36 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Status</label>
-                                        <div class="selectgroup selectgroup-pills">
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="status" value="1" class="selectgroup-input"
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="form-label">Status</label>
+                                                <div class="selectgroup selectgroup-pills">
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="is_available" value="1" class="selectgroup-input"
+                                                            checked="">
+                                                        <span class="selectgroup-button">IN STOCK</span>
+                                                    </label>
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="is_available" value="0" class="selectgroup-input">
+                                                        <span class="selectgroup-button">OUT OF STOCK</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Best Seller</label>
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="is_best_seller" value="1" class="selectgroup-input">
+                                                    <span class="selectgroup-button">YES</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="is_best_seller" value="0" class="selectgroup-input"
                                                     checked="">
-                                                <span class="selectgroup-button">Active</span>
-                                            </label>
-                                            <label class="selectgroup-item">
-                                                <input type="radio" name="status" value="0" class="selectgroup-input">
-                                                <span class="selectgroup-button">Inactive</span>
-                                            </label>
+                                                    <span class="selectgroup-button">NO</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     {{-- <div class="form-group">

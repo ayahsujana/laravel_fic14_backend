@@ -50,7 +50,7 @@ class ProductController extends Controller
             'stock' => (int) $request->stock,
             'barcode' => (int) $request->barcode,
             'category_id' => $request->category_id,
-            'image' => $filename,
+            'image' => $imagePath,
             'is_favorite' => $request->is_favorite
         ]);
 
